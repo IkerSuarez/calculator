@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css?family=Orbitron|Comfortaa|Lato");
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #0e103d;
+}
+
+#outer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 5px;
+  background-color: #f2d7ee;
+  height: 307px;
+  width: 205px;
+}
+
+#display {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 1px;
+  padding: 5px;
+  height: 50px;
+  width: 203px;
+  box-sizing: border-box;
+  border-radius: 5px 5px 0px 0px;
+  font-family: Orbitron;
+  font-size: 20px;
+  background-color: #69306d;
+  color: #f2d7ee;
+}
+
+#buttons {
+  width: 203px;
+  height: 254px;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 1px;
+}
+
+.btn-class {
+  border: none;
+  font-family: Lato;
+  font-size: 20px;
+  color: #f2d7ee;
+}
+
+.btn-class:active {
+  background-color: chartreuse;
+}
+
+
+#clr {
+  grid-area: 1/1/2/2;
+  background-color: #d3bcc0;
+  color: #a5668b;
+}
+
+#one {
+  grid-area: 4/1/5/2;
+  background-color: #d3bcc0;
+  color: #a5668b;
+}
+
+#two {
+  grid-area: 4/2/5/3;
+  background-color: #d3bcc0;
+  color: #a5668b;
+}
+
+#three {
+  grid-area: 4/3/5/4;
+  background-color: #d3bcc0;
+  color: #a5668b;
+}
+
+#four {
+  grid-area: 3/1/4/2;
+  background-color: #d3bcc0;
+  color: #a5668b;
+}
+
+#five {
+  grid-area: 3/2/4/3;
+  background-color: #d3bcc0;
+  color: #a5668b;
+}
+
+#six {
+  grid-area: 3/3/4/4;
+  background-color: #d3bcc0;
+  color: #a5668b;
+}
+
+#seven {
+  grid-area: 2/1/3/2;
+  background-color: #d3bcc0;
+  color: #a5668b;
+}
+
+#eight {
+  grid-area: 2/2/3/3;
+  background-color: #d3bcc0;
+  color: #a5668b;
+}
+
+#nine {
+  grid-area: 2/3/3/4;
+  background-color: #d3bcc0;
+  color: #a5668b;
+}
+
+#zero {
+  grid-area: 5/1/6/3;
+  border-radius: 0px 0px 0px 5px;
+  background-color: #d3bcc0;
+  color: #a5668b;
+}
+
+#plus {
+  grid-area: 4/4/5/5;
+  background-color: #a5668b;
+}
+
+#minus {
+  grid-area: 3/4/4/5;
+  background-color: #a5668b;
+}
+
+#mult {
+  grid-area: 2/4/3/5;
+  background-color: #a5668b;
+}
+
+#divi {
+  grid-area: 1/4/2/5;
+  background-color: #a5668b;
+}
+
+#equa {
+  grid-area: 5/4/6/5;
+  border-radius: 0px 0px 5px 0px;
+  background-color: #a5668b;
+}
+
+#period {
+  grid-area: 5/3/6/4;
+  background-color: #d3bcc0;
+  color: #a5668b;
+}
+
+span {
+  font-family: Comfortaa;
+  font-size: 8px;
+  color: #d3bcc0;
+  margin: 10px;
+}
+
+button:hover {
+  background-color: chocolate;
+}
