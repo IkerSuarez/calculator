@@ -4,6 +4,8 @@ const buttons = document.querySelectorAll("button");
 let currentDisplay = "0";
 let operatorActive = false;
 let operatorName;
+let equalOperatorName;
+let equalActive = false;
 let accumulated;
 
 const operators = {
@@ -15,6 +17,9 @@ const operators = {
 
 const operate = (operator, num1, num2) => {
   accumulated = Math.round(operators[operator](num1, num2) * 1000000) / 1000000;
+  if (accumulated.toString().length > 11) {
+    accumulated = accumulated.toExponential(6);
+  }
 };
 
 display.textContent = currentDisplay;
@@ -23,21 +28,23 @@ buttons.forEach(elem =>
   elem.addEventListener("click", e => {
     switch (e.target.dataset.type) {
       case "number":
+        if (equalActive) {
+          accumulated = undefined;
+          equalActive = false;
+          equalOperatorName = undefined;
+        }
         if (operatorActive) {
           currentDisplay = e.target.value;
-          operatorActive = false;
           display.textContent = currentDisplay;
+          operatorActive = false;
         } else if (
           currentDisplay.length < 11 ||
           (currentDisplay.length < 12 && currentDisplay.includes("."))
         ) {
-          if (operatorActive == true) {
-          } else {
-            currentDisplay == "0"
-              ? (currentDisplay = e.target.value)
-              : (currentDisplay += e.target.value);
-            display.textContent = currentDisplay;
-          }
+          currentDisplay == "0"
+            ? (currentDisplay = e.target.value)
+            : (currentDisplay += e.target.value);
+          display.textContent = currentDisplay;
         }
         break;
 
@@ -50,11 +57,11 @@ buttons.forEach(elem =>
         if (!currentDisplay.includes(".") && currentDisplay.length < 11) {
           currentDisplay += ".";
           display.textContent = currentDisplay;
-        } else {
         }
         break;
 
       case "operator":
+        equalActive = false;
         if (operatorName && !operatorActive) {
           operate(operatorName, accumulated * 1, currentDisplay * 1);
           operatorName = e.target.value;
@@ -71,18 +78,28 @@ buttons.forEach(elem =>
         break;
 
       case "clear":
+        equalActive = false;
         operatorActive = false;
         operatorName = undefined;
         accumulated = undefined;
+        equalOperatorName = undefined;
         currentDisplay = "0";
         display.textContent = currentDisplay;
         break;
 
       case "equal":
-        if (operatorName) {
-          operate(operatorName, accumulated * 1, currentDisplay * 1);
+        equalActive = true;
+        if (operatorName || equalOperatorName) {
+          operate(
+            operatorName || equalOperatorName,
+            accumulated * 1,
+            currentDisplay * 1
+          );
+          if (operatorName) {
+            equalOperatorName = operatorName;
+            operatorName = undefined;
+          }
           display.textContent = accumulated;
-          //currentDisplay = "0";
           operatorActive = true;
         }
         break;
